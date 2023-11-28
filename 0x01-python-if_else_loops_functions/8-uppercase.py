@@ -8,6 +8,6 @@ def upperchar(c: str) -> int:
 def uppercase(str: str) -> None:
     ret = ""
     for chars in str:
-        ret += "%c" % uppercase(chars)
+        ret += "%c" % upperchar(chars)
     print("{:s}".format(ret))
 
