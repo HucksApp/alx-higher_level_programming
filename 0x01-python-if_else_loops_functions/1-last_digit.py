@@ -6,5 +6,5 @@ lst = int(repr(number)[-1])
 gr = "greater than 5"
 lss = "less than 6 and not 0"
 fmt = gr if lst > 5 else lss if lst < 6 and lst != 0 else "0"
-print(f"Last digit of {number} is {lst} and is {fmt} ")
+print(f"Last digit of {number} is {lst} and is {fmt}")
 
