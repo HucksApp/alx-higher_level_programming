@@ -9,4 +9,4 @@ def uppercase(str: str) -> None:
     ret = ""
     for chars in str:
         ret += "%c" % upperchar(chars)
-        print("{:s}".format(ret))
+    print("{:s}".format(ret))
