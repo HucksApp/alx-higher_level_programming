@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-def magic_calculation(a: int, b: int, c :int) -> int:
+def magic_calculation(a: int, b: int, c: int) -> int:
     if a < b:
         return c
     else:
