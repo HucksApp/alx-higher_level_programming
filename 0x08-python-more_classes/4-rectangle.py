@@ -30,12 +30,6 @@ class Rectangle:
                 rep += "\n"
         return rep
 
-    def __repr__(self):
-        """Return a string representation of a Rectangle instance
-        that is able to recreate a new instance by using eval()
-        """
-        return (f"{self.__class__.__name__}({self.__width}, {self.__height})")
-
     @property
     def width(self) -> int:
         """Retrieves the width of a Rectangle instance."""
@@ -89,3 +83,9 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return 0
         return 2 * (self.__width + self.__height)
+
+    def __repr__(self):
+        """Return a string representation of a Rectangle instance
+        that is able to recreate a new instance by using eval()
+        """
+        return (f"{self.__class__.__name__}({self.__width}, {self.__height})")
