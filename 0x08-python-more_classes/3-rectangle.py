@@ -20,6 +20,8 @@ class Rectangle:
     def __str__(self):
         """Returns an informal and nicely printable string representation
         of a Rectangle instance, filled with the '#' character."""
+        if self.__height == 0 or self.__width == 0:
+            return ''
         rep = ""
         for h in range(self.__height):
             for w in  range(self.__width):
