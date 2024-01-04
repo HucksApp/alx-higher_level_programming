@@ -35,7 +35,7 @@ class Rectangle:
         that is able to recreate a new instance by using eval()
         """
         return "{}({}, {})"
-                        .format(self.__class__.__name__, self.__width, self.__height)
+                .format(self.__class__.__name__, self.__width, self.__height)
 
     @property
     def width(self) -> int:
