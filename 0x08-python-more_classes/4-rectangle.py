@@ -17,7 +17,7 @@ class Rectangle:
         self.width = width
         self.height = height
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Returns an informal and nicely printable string representation
         of a Rectangle instance, filled with the '#' character."""
         if self.__height == 0 or self.__width == 0:
@@ -84,7 +84,7 @@ class Rectangle:
             return 0
         return 2 * (self.__width + self.__height)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Return a string representation of a Rectangle instance
         that is able to recreate a new instance by using eval()
         """
