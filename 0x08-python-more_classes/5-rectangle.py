@@ -36,6 +36,10 @@ class Rectangle:
         """
         return (f"{self.__class__.__name__}({self.__width}, {self.__height})")
 
+    def __del__(self):
+        """Deletes a Rectangle instance."""
+        print("Bye rectangle...")
+
     @property
     def width(self) -> int:
         """Retrieves the width of a Rectangle instance."""
