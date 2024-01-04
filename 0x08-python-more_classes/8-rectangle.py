@@ -99,7 +99,7 @@ class Rectangle:
             return 0
         return 2 * (self.__width + self.__height)
 
-     @staticmethod
+    @staticmethod
     def bigger_or_equal(rect_1: 'Rectangle', rect_2: 'Rectangle') -> 'Rectangle':
         for x in (rect_1, rect_2):
             if not isinstance(x, Rectangle):
