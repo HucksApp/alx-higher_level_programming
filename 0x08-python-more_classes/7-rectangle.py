@@ -8,6 +8,7 @@ class Rectangle:
     """Rectangle class defined by width and height."""
 
     number_of_instances = 0
+    print_symbol = '#'
 
     def __init__(self, width: int = 0, height: int = 0) -> None:
         """Initializes a Rectangle instance.
