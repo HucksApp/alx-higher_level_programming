@@ -20,7 +20,7 @@ class Rectangle:
         self.height = height
         Rectangle.number_of_instances += 1
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Returns an informal and nicely printable string representation
         of a Rectangle instance, filled with the '#' character."""
         if self.__height == 0 or self.__width == 0:
@@ -33,13 +33,13 @@ class Rectangle:
                 rep += "\n"
         return rep
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """Return a string representation of a Rectangle instance
         that is able to recreate a new instance by using eval()
         """
         return (f"{self.__class__.__name__}({self.__width}, {self.__height})")
 
-    def __del__(self):
+    def __del__(self) -> None:
         """Deletes a Rectangle instance."""
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
