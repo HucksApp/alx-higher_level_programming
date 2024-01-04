@@ -16,6 +16,18 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+    
+    def __str__(self):
+        """Returns an informal and nicely printable string representation
+        of a Rectangle instance, filled with the '#' character."""
+        rep = ""
+        for h in range(self.__height):
+            for w in  range(self.__width):
+                rep += str(self.print_symbol)
+            if h < self.__height - 1:
+                rep +="\n"
+        return rep
+        
 
     @property
     def width(self) -> int:
