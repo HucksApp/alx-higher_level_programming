@@ -105,7 +105,7 @@ class Rectangle:
         for x in (rect_1, rect_2):
             if not isinstance(x, Rectangle):
                 err_msg = f"{'rect_1' if x == rect_1 else 'rect_2'} 
-                          must be an instance of Rectangle"
+                                must be an instance of Rectangle"
                 raise TypeError(err_msg)
         if rect_1.area() == rect_2.area() or rect_1.area() > rect_2.area():
             return rect_1
