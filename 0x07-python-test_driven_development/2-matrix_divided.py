@@ -6,7 +6,7 @@ Divides each element of a matrix of numbers by a number
 """
 
 
-def matrix_divided(matrix: list, div: int| float)-> list:
+def matrix_divided(matrix: list, div: int | float) -> list:
     """Returns a new matrix (list of list)
     with the result of the division of matrix by div
     rounded to 2 decimal places.
@@ -14,7 +14,7 @@ def matrix_divided(matrix: list, div: int| float)-> list:
     size = len(matrix[0])
     div_matrix = []
     if type(div) is not int and type(div) is not float:
-         raise TypeError("div must be a number")
+        raise TypeError("div must be a number")
     elif div == 0:
         raise ZeroDivisionError("division by zero")
     for shape in matrix:
