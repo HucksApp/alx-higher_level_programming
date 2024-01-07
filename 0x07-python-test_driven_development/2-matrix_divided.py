@@ -24,7 +24,7 @@ def matrix_divided(matrix: list, div: int | float) -> list:
         for elem in shape:
             if type(elem) is not int and type(elem) is not float:
                 raise TypeError\
-                ("matrix must be a matrix (list of lists) of integers/floats")
+                    ("matrix must be a matrix (list of lists) of integers/floats")
             shape_matrix.append(round(elem/div, 2))
         div_matrix.append(shape_matrix)
     return div_matrix
