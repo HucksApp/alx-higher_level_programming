@@ -5,7 +5,6 @@
 '''
 
 
-
 def add_integer(a: int | float, b: int | float = 98) -> int:
     '''Returns an integer: the addition of a and b
         where a and b is of type float or int
