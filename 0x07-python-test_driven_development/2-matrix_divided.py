@@ -28,4 +28,3 @@ def matrix_divided(matrix: list, div: int | float) -> list:
             shape_matrix.append(round(elem/div, 2))
         div_matrix.append(shape_matrix)
     return div_matrix
-
