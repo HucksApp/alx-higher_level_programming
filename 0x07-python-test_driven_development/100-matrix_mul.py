@@ -17,11 +17,11 @@ def matrix_mul(m_a, m_b):
         if type(matr) is not list:
             raise TypeError(f"{msg} must be a list")
 
-        size = len(matr[0])
         for row in matr:
             if type(row) is not list:
                 raise TypeError(f"{msg} must be a list of lists")
 
+            size = len(matr[0])
             if len(row) != size:
                 raise TypeError(f"each row of {msg} must be of the same size")
             for x in row:
