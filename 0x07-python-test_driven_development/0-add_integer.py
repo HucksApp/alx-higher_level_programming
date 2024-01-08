@@ -5,6 +5,7 @@ Adds two integer together
 
 """
 
+
 def add_integer(a, b=98):
     """Returns an integer: the addition of a and b
     where a and b is of type float or int
