@@ -32,7 +32,7 @@ Now test it:
 
     >>> print(lazy_matrix_mul(["Betty", "Holberton"], [[1, 2]]))
     Traceback (most recent call last):
-    ValueError: Scalar operands are not allowed, use '*' instead
+    ValueError: shapes (2,) and (1,2) not aligned: 2 (dim 0) != 1 (dim 0)
 
     >>> print(lazy_matrix_mul([[1, 2]], ["Betty", "Holberton"]))
     Traceback (most recent call last):
