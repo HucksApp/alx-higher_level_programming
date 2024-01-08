@@ -2,6 +2,7 @@
 """
 Module add integer
 Adds two integers
+
 """
 
 def add_integer(a: int | float, b: int | float = 98) -> int:
@@ -11,7 +12,7 @@ def add_integer(a: int | float, b: int | float = 98) -> int:
 
     add_sum = 0
     for x in (a, b):
-        if type(x) is not int and type(x) is not float:
+        if type(x) not in [float, int]:
             raise TypeError(f'{"a" if x == a else "b"} must be an integer')
         if type(x) is float:
             x = int(x)
