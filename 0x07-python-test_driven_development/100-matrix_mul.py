@@ -13,7 +13,7 @@ def matrix_mul(m_a, m_b):
         msg = "m_a" if matr == m_a else "m_b"
 
         if matr == [] or matr == [[]]:
-            raise ValueError("f{msg} can't be empty")
+            raise ValueError(f"{msg} can't be empty")
 
         if type(matr) is not list:
             raise TypeError(f"{msg} must be a list")
