@@ -54,11 +54,11 @@ Now test it:
 
     >>> matrix_mul([[9, 4], [2]], [[1, 2], [4, 9]])
     Traceback (most recent call last):
-    TypeError: each row of m_a must should be of the same size
+    TypeError: each row of m_a must be of the same size
 
     >>> matrix_mul([[9, 4], [2, 7.0]], [[1], [4, 9]])
     Traceback (most recent call last):
-    TypeError: each row of m_b must should be of the same size
+    TypeError: each row of m_b must be of the same size
 
     >>> matrix_mul([[9, 4, 4], [2, 8, 2]], [[1, 2], [4, 9]])
     Traceback (most recent call last):
