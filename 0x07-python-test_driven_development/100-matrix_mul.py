@@ -8,7 +8,6 @@ def matrix_mul(m_a, m_b):
     """Return the matrix resulting of
     the multiplication of m_a and m_b."""
 
-
     for matr in (m_a, m_b):
         msg = "m_a" if matr == m_a else "m_b"
 
