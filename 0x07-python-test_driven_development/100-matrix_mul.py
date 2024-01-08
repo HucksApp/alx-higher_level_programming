@@ -25,25 +25,15 @@ def matrix_mul(m_a, m_b):
     if m_b == [] or m_b == [[]]:
         raise ValueError("m_b can't be empty")
 
-    for row in m_a:
-        for x in row:
-            if type(x) is not int and type(x) is not float:
-                raise TypeError("m_a should contain only integers or floats")
-    for row in m_b:
-        for x in row:
-            if type(x) is not int and type(x) is not float:
-                raise TypeError("m_b should contain only integers or floats")
-
-    row_len = []
-    for row in m_a:
-        row_len.append(len(row))
-    if not all(elem == row_len[0] for elem in row_len):
-        raise TypeError("each row of m_a must should be of the same size")
-    row_len = []
-    for row in m_b:
-        row_len.append(len(row))
-    if not all(elem == row_len[0] for elem in row_len):
-        raise TypeError("each row of m_b must should be of the same size")
+    for matr in (m_a, m_b):
+        msg = "m_a" if matr == m_a else "m_b"
+        size = len(matr[0])
+        for row in matr: 
+            if len(row) != size:
+                raise(f"each row of {msg} must be of the same size")
+            for x in row:
+                if type(x) not in [int, float]:
+                    raise TypeError(f"{msg} should contain only integers or floats")
 
     a_col = 0
     for col in m_a[0]:
