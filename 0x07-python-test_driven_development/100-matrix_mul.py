@@ -15,10 +15,10 @@ def matrix_mul(m_a, m_b):
         if matr == [] or matr == [[]]:
             raise ValueError("f{msg} can't be empty")
 
-        size = len(matr[0])
         if type(matr) is not list:
             raise TypeError(f"{msg} must be a list")
 
+        size = len(matr[0])
         for row in matr:
             if type(row) is not list:
                 raise TypeError(f"{msg} must be a list of lists")
