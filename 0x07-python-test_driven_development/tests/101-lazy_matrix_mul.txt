@@ -36,11 +36,11 @@ Now test it:
 
     >>> print(lazy_matrix_mul([[1, 2]], ["Betty", "Holberton"]))
     Traceback (most recent call last):
-    TypeError: ufunc 'matmul' did not contain a loop with signature matching types dtype('<U21') dtype('<U21') dtype('<U21')
+    TypeError: invalid data type for einsum
 
     >>> print(lazy_matrix_mul([], [[9, 4]]))
     Traceback (most recent call last):
-    ValueError: Scalar operands are not allowed, use '*' instead
+    ValueError: shapes (0,) and (1,2) not aligned: 0 (dim 0) != 1 (dim 0)
 
     >>> print(lazy_matrix_mul([[9, 4]], [[]]))
     Traceback (most recent call last):
