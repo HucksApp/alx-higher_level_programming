@@ -30,7 +30,7 @@ def matrix_mul(m_a, m_b):
         size = len(matr[0])
         for row in matr: 
             if len(row) != size:
-                raise(f"each row of {msg} must be of the same size")
+                raise TypeError(f"each row of {msg} must be of the same size")
             for x in row:
                 if type(x) not in [int, float]:
                     raise TypeError(f"{msg} should contain only integers or floats")
