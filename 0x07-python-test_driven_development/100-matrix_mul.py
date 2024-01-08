@@ -8,27 +8,21 @@ def matrix_mul(m_a, m_b):
     """Return the matrix resulting of
     the multiplication of m_a and m_b."""
 
-    if type(m_a) is not list:
-        raise TypeError("m_a must be a list")
-    if type(m_b) is not list:
-        raise TypeError("m_b must be a list")
-
-    for x in m_a:
-        if type(x) is not list:
-            raise TypeError("m_a must be a list of lists")
-    for x in m_b:
-        if type(x) is not list:
-            raise TypeError("m_b must be a list of lists")
-
-    if m_a == [] or m_a == [[]]:
-        raise ValueError("m_a can't be empty")
-    if m_b == [] or m_b == [[]]:
-        raise ValueError("m_b can't be empty")
 
     for matr in (m_a, m_b):
         msg = "m_a" if matr == m_a else "m_b"
         size = len(matr[0])
-        for row in matr: 
+
+        if matr == [] or matr == [[]]:
+            raise ValueError("f{msg} can't be empty")
+
+        if type(matr) is not list:
+            raise TypeError(f"{msg} must be a list")
+
+        for row in matr:
+            if type(row) is not list:
+            raise TypeError(f"{msg} must be a list of lists")
+
             if len(row) != size:
                 raise TypeError(f"each row of {msg} must be of the same size")
             for x in row:
