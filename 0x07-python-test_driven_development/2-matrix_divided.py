@@ -6,7 +6,7 @@ Divides each element of a matrix of numbers by a number
 """
 
 
-def matrix_divided(matrix: list, div: int | float) -> list:
+def matrix_divided(matrix, div):
     """Returns a new matrix (list of list)
     with the result of the division of matrix by div
     rounded to 2 decimal places.
