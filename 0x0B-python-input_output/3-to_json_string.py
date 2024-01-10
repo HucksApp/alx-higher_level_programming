@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines a string-to-JSON function."""
-from json dumps
+from json import dumps
 
 
 def to_json_string(my_obj):
