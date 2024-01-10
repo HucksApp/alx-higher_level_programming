@@ -1,7 +1,3 @@
-#!/usr/bin/python3
-"""Defines a text file insertion function."""
-
-
 def append_after(filename="", search_string="", new_string=""):
     """Insert text after each line containing a given string in a file.
 
@@ -10,9 +6,11 @@ def append_after(filename="", search_string="", new_string=""):
         search_string (str): The string to search for within the file.
         new_string (str): The string to insert.
     """
+    text = ""
     with open(filename) as r:
         for line in r:
+            text += line
             if search_string in line:
-                set_point = r.tell()
-                r.seek(set_point)
-                r.write(new_string)
+                text += new_string
+    with open(filename, "w") as w:
+        w.write(text)
