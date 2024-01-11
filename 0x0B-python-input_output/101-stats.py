@@ -5,9 +5,10 @@ prints the following statistics:
     - Total file size up to that point.
     - Count of read status codes up to that point.
 """
+from sys import stdin
 
 
-def stats_metrics(stdin):
+def stats_metrics():
     """Reads from standard input, computes metrics
         and print metrics
     """
@@ -55,6 +56,5 @@ def parse_metrics(line, stats):
 
 
 if __name__ == "__main__":
-    from sys import stdin
 
-    stats_metrics(stdin)
+    stats_metrics()
