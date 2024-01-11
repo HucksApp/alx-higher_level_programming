@@ -10,7 +10,7 @@
 from sys import stdin
 
 
-def stats_metrics() -> None:
+def stats_metrics():
     """Reads from standard input, computes metrics
         and print metrics
     """
@@ -31,7 +31,7 @@ def stats_metrics() -> None:
          raise
 
 
-def print_stats(total_size: int, stats: dict) -> None:
+def print_stats(total_size, stats):
     """Print accumulated metrics.
     Args:
         total_size: The accumulated read file size.
@@ -42,7 +42,7 @@ def print_stats(total_size: int, stats: dict) -> None:
         if stats[key]:
             print(f"{key}: {stats[key]}")
 
-def parse_metrics(line: str, stats: dict) -> int:
+def parse_metrics(line, stats):
     """parse the current line
     Args:
         str: current stdin line
