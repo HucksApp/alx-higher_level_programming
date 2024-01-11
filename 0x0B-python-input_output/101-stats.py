@@ -12,8 +12,8 @@ def stats_metrics(stdin):
         and print metrics
     """
     total_size = 0
-    stats ={'200':0, '301':0, '400':0, '401':0, 
-            '403':0, '404':0, '405':0, '500':0}
+    stats ={'200' : 0, '301' : 0, '400' : 0, '401' : 0, 
+            '403' : 0, '404' : 0, '405' : 0, '500' : 0}
     try:
         while True:
             line_no = 0
@@ -23,9 +23,9 @@ def stats_metrics(stdin):
                 if line_no == 10:
                     break
             print_stats(total_size, stats)
-     except KeyboardInterrupt:
-         print_stats(total_size, stats)
-         raise
+    except KeyboardInterrupt:
+        print_stats(total_size, stats)
+        raise
 
 
 def print_stats(total_size, stats):
