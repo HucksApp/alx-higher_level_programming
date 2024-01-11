@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Reads from standard input and computes metrics.
-    After every ten lines or the input of a keyboard interruption (CTRL + C),
-    prints the following statistics:
+After every ten lines or the input of a keyboard interruption (CTRL + C),
+prints the following statistics:
     - Total file size up to that point.
     - Count of read status codes up to that point.
 """
@@ -55,5 +55,6 @@ def parse_metrics(line, stats):
 
 if __name__ == "__main__":
     from sys import stdin
+    
     stats_metrics(stdin)
     
