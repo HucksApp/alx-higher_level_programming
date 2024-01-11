@@ -12,8 +12,8 @@ def stats_metrics(stdin):
         and print metrics
     """
     total_size = 0
-    stats = {'200': 0, '301': 0, '400': 0, '401': 0, 
-            '403': 0, '404': 0, '405': 0, '500': 0}
+    stats = {'200': 0, '301': 0, '400': 0, '401': 0,
+        '403': 0, '404': 0, '405': 0, '500': 0}
     try:
         while True:
             line_no = 0
@@ -39,21 +39,22 @@ def print_stats(total_size, stats):
         if stats[key]:
             print(f"{key}: {stats[key]}")
 
+
 def parse_metrics(line, stats):
     """parse the current line
     Args:
         str: current stdin line
         stats: The accumulated count of status codes.
     """
-    values =  line[line.rfind('"') + 1: -1].strip().split(" ")
+    values = line[line.rfind('"') + 1: -1].strip().split(" ")
     if len(values) != 2:
         return 0
     if values[0] in [*stats]:
-        stats[values[0]] +=1
+        stats[values[0]] += 1
     return int(values[1]) if values[1] else 0
 
 
 if __name__ == "__main__":
     from sys import stdin
-    
+
     stats_metrics(stdin)
