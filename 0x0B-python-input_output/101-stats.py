@@ -7,10 +7,7 @@
 """
 
 
-from sys import stdin
-
-
-def stats_metrics():
+def stats_metrics(stdin):
     """Reads from standard input, computes metrics
         and print metrics
     """
@@ -57,5 +54,6 @@ def parse_metrics(line, stats):
 
 
 if __name__ == "__main__":
-    stats_metrics()
+    from sys import stdin
+    stats_metrics(stdin)
     
