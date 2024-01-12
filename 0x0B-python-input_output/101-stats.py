@@ -5,7 +5,7 @@ prints the following statistics:
     - Total file size up to that point.
     - Count of read status codes up to that point.
 """
-from sys import stdin
+from sys import stdin, exit
 
 
 def stats_metrics(total_size, stats):
@@ -60,3 +60,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print_stats(total_size, stats)
         raise
+        exit()
