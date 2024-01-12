@@ -18,13 +18,13 @@ def stats_metrics():
              '403': 0, '404': 0, '405': 0, '500': 0}
 
     try:
-        line_no = 0
+        line_no = 1
         for line in stdin:
             total_size += parse_metrics(line, stats)
-            line_no += 1
             if line_no == 10:
                 line_no = 0
                 print_stats(total_size, stats)
+            line_no += 1
 
     except KeyboardInterrupt:
         print_stats(total_size, stats)
