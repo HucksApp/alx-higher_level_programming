@@ -16,14 +16,13 @@ def stats_metrics():
     stats = {'200': 0, '301': 0, '400': 0, '401': 0,
              '403': 0, '404': 0, '405': 0, '500': 0}
     try:
-        while True:
-            line_no = 0
-            for line in stdin:
-                total_size += parse_metrics(line, stats)
-                line_no += 1
-                if line_no == 10:
-                    break
-            print_stats(total_size, stats)
+        line_no = 0
+        for line in stdin:
+            total_size += parse_metrics(line, stats)
+            line_no += 1
+            if line_no == 10:
+                print_stats(total_size, stats)
+                line_no = 0
     except KeyboardInterrupt:
         print_stats(total_size, stats)
         raise
