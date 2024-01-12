@@ -21,8 +21,8 @@ def stats_metrics():
             total_size += parse_metrics(line, stats)
             line_no += 1
             if line_no == 10:
-                print_stats(total_size, stats)
                 line_no = 0
+            print_stats(total_size, stats)
     except KeyboardInterrupt:
         print_stats(total_size, stats)
         raise
