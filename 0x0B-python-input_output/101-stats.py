@@ -12,6 +12,7 @@ def stats_metrics():
     """Reads from standard input, computes metrics
         and print metrics
     """
+
     total_size = 0
     stats = {'200': 0, '301': 0, '400': 0, '401': 0,
              '403': 0, '404': 0, '405': 0, '500': 0}
@@ -36,6 +37,7 @@ def print_stats(total_size, stats):
         total_size: The accumulated read file size.
         stats: The accumulated count of status codes.
     """
+
     print(f"File size: {total_size}")
     for key in sorted(stats):
         if stats[key]:
@@ -48,12 +50,14 @@ def parse_metrics(line, stats):
         str: current stdin line
         stats: The accumulated count of status codes.
     """
-    values = line[line.rfind('"') + 1: -1].strip().split(" ")
-    if len(values) != 2:
+
+    try:
+        values = (line.strip().split(" "))[-2: ]
+        if values[0] in [*stats]:
+            stats[values[0]] += 1
+        return int(values[1]) if values[1] else 0
+    except (IndexError, ValueError):
         return 0
-    if values[0] in [*stats]:
-        stats[values[0]] += 1
-    return int(values[1]) if values[1] else 0
 
 
 if __name__ == "__main__":
