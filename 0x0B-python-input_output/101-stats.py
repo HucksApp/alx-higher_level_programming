@@ -53,7 +53,7 @@ def parse_metrics(line, stats):
     """
 
     try:
-        values = (line.strip().split(" "))[-2: ]
+        values = (line.strip().split(" "))[-2:]
         if values[0] in [*stats]:
             stats[values[0]] += 1
         return int(values[1]) if values[1] else 0
