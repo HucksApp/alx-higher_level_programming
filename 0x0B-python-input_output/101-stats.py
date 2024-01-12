@@ -25,6 +25,7 @@ def stats_metrics():
                 line_no = 0
                 print_stats(total_size, stats)
             line_no += 1
+        print_stats(total_size, stats)
 
     except KeyboardInterrupt:
         print_stats(total_size, stats)
