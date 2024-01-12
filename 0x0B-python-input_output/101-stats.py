@@ -57,4 +57,4 @@ def parse_metrics(line, stats):
 
 
 if __name__ == "__main__":
-        stats_metrics()
+    stats_metrics()
