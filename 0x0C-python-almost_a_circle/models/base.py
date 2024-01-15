@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines a base model class."""
-from json import dumps,loads
+from json import dumps, loads
 from csv import writer, DictReader
 import turtle
 
@@ -42,6 +42,7 @@ class Base:
             list_objs (list): A list of inherited Base instances.
         """
         filename = f'{cls.__name__}.json'
+
         def writeJFile(json_obj):
             with open(filename, "w", encoding='utf-8') as file:
                 file.write(json_obj)
@@ -50,7 +51,7 @@ class Base:
             writeJFile("[]")
             return
 
-        out =[]
+        out = []
         for obj in list_objs:
             if not issubclass(obj.__class__, Base):
                 raise TypeError("object must be a subclass of Base")
@@ -79,7 +80,7 @@ class Base:
         """
         if not dictionary:
             return
-        cls_init = [1] if cls is Square else [1,1]
+        cls_init = [1] if cls is Square else [1, 1]
         new = cls(*cls_init)
         new.update(**dictionary)
         return new
