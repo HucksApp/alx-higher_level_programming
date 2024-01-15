@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a base model class."""
-import json
-import csv
+from json import dumps,loads
+from csv import writer, DictReader
 import turtle
 
 
@@ -19,7 +19,7 @@ class Base:
         Args:
             id (int): The identity of the new Base.
         """
-        if id is not None:
+        if id:
             self.id = id
         else:
             Base.__nb_objects += 1
@@ -31,7 +31,7 @@ class Base:
         Args:
             list_dictionaries (list): A list of dictionaries.
         """
-        if list_dictionaries is None or list_dictionaries == []:
+        if not list_dictionaries:
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -41,13 +41,22 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".json"
-        with open(filename, "w") as jsonfile:
-            if list_objs is None:
-                jsonfile.write("[]")
-            else:
-                list_dicts = [o.to_dictionary() for o in list_objs]
-                jsonfile.write(Base.to_json_string(list_dicts))
+        filename = f'{cls.__name__}.json'
+        def writeJFile(json_obj):
+            with open(filename, "w", encoding='utf-8') as file:
+                file.write(json_obj)
+
+        if not list_objs:
+            writeJFile("[]")
+            return
+
+        out =[]
+        for obj in list_objs:
+            if not issubclass(obj.__class__, Base):
+                raise TypeError("object must be a subclass of Base")
+            out.append(obj.to_dictionary())
+        json_obj = cls.to_json_string(out)
+        writeJFile(json_obj)
 
     @staticmethod
     def from_json_string(json_string):
@@ -58,9 +67,9 @@ class Base:
             If json_string is None or empty - an empty list.
             Otherwise - the Python list represented by json_string.
         """
-        if json_string is None or json_string == "[]":
+        if json_string is None:
             return []
-        return json.loads(json_string)
+        return loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
@@ -68,13 +77,12 @@ class Base:
         Args:
             **dictionary (dict): Key/value pairs of attributes to initialize.
         """
-        if dictionary and dictionary != {}:
-            if cls.__name__ == "Rectangle":
-                new = cls(1, 1)
-            else:
-                new = cls(1)
-            new.update(**dictionary)
-            return new
+        if not dictionary:
+            return
+        cls_init = [1] if cls is Square else [1,1]
+        new = cls(*cls_init)
+        new.update(**dictionary)
+        return new
 
     @classmethod
     def load_from_file(cls):
