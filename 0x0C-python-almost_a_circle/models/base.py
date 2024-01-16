@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a base model class."""
 from json import dumps, loads
-from csv import writer, DictReader
+from csv import writer, DictReader, DictWriter
 import turtle
 
 
@@ -33,7 +33,7 @@ class Base:
         """
         if not list_dictionaries:
             return "[]"
-        return json.dumps(list_dictionaries)
+        return dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -93,13 +93,23 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = str(cls.__name__) + ".json"
+        filename = f'{cls.__name__}.json'
+        lines = ""
+        json_props = []
+        out = []
         try:
-            with open(filename, "r") as jsonfile:
-                list_dicts = Base.from_json_string(jsonfile.read())
-                return [cls.create(**d) for d in list_dicts]
-        except IOError:
+            with open(filename, "r", encoding='utf-8') as file:
+                lines = file.read()
+        except FileNotFoundError:
             return []
+        if lines:
+            json_props =  cls.from_json_string(lines)
+            for props in json_props:
+                obj_init = [1] if cls is Square else [1, 1]
+                obj = cls(*obj_init)
+                obj.update(**props)
+                out.append(obj)
+        return out
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -107,18 +117,18 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".csv"
-        with open(filename, "w", newline="") as csvfile:
-            if list_objs is None or list_objs == []:
-                csvfile.write("[]")
-            else:
-                if cls.__name__ == "Rectangle":
+        filename = f'{cls.__name__}.csv'
+        with open(filename, "w",newline="", encoding='utf-8') as file:
+            if not list_objs:
+                file.writerow("[]")
+                return
+            if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                csv_writer = DictWriter(file, fieldnames=fieldnames)
                 for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+                    csv_writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
@@ -128,17 +138,20 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = cls.__name__ + ".csv"
+        filename = f'{cls.__name__}.csv'
         try:
-            with open(filename, "r", newline="") as csvfile:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in list_dicts]
-                return [cls.create(**d) for d in list_dicts]
+            out = []
+            with open(filename, encoding='utf-8') as file:
+                csv_reader = DictReader(file)
+
+                for row in csv_reader:
+                    obj_init = [1] if cls is Square else [1, 1]
+                    obj = cls(*obj_init)
+                    for key, value in row.items():
+                        row[key] = int(value)
+                    obj.update(**row)
+                    out.append(obj)
+            return out
         except IOError:
             return []
 
