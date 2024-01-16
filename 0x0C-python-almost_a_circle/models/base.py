@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a base model class."""
-import json
-import csv
+from json import dumps, loads
+from csv import DictReader, DictWriter
 import turtle
 
 
@@ -33,7 +33,7 @@ class Base:
         """
         if not list_dictionaries:
             return "[]"
-        return json.dumps(list_dictionaries)
+        return dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
