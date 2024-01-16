@@ -103,7 +103,7 @@ class Base:
         except FileNotFoundError:
             return []
         if lines:
-            json_props =  cls.from_json_string(lines)
+            json_props = cls.from_json_string(lines)
             for props in json_props:
                 obj_init = [1] if cls is Square else [1, 1]
                 obj = cls(*obj_init)
@@ -118,7 +118,7 @@ class Base:
             list_objs (list): A list of inherited Base instances.
         """
         filename = f'{cls.__name__}.csv'
-        with open(filename, "w",newline="", encoding='utf-8') as file:
+        with open(filename, "w", newline="", encoding='utf-8') as file:
             if not list_objs:
                 file.writerow("[]")
                 return
