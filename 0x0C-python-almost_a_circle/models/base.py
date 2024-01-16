@@ -80,7 +80,7 @@ class Base:
         """
         if not dictionary:
             return
-        cls_init = [1] if cls is Square else [1, 1]
+        cls_init = [1] if cls.__name__ == 'Square' else [1, 1]
         new = cls(*cls_init)
         new.update(**dictionary)
         return new
@@ -105,7 +105,7 @@ class Base:
         if lines:
             json_props = cls.from_json_string(lines)
             for props in json_props:
-                obj_init = [1] if cls is Square else [1, 1]
+                obj_init = [1] if cls.__name__ == 'Square' else [1, 1]
                 obj = cls(*obj_init)
                 obj.update(**props)
                 out.append(obj)
@@ -145,7 +145,7 @@ class Base:
                 csv_reader = DictReader(file)
 
                 for row in csv_reader:
-                    obj_init = [1] if cls is Square else [1, 1]
+                    obj_init = [1] if cls.__name__ == 'Square' else [1, 1]
                     obj = cls(*obj_init)
                     for key, value in row.items():
                         row[key] = int(value)
