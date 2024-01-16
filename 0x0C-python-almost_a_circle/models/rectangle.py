@@ -136,5 +136,5 @@ class Rectangle(Base):
         '''
             Overwritting the str method
         '''
-        return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__, self.id,
-                                                self.x, self.y, self.width, self.height)
+        return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__, self.id, self.x,
+                                                self.y, self.width, self.height)
