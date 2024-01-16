@@ -31,7 +31,7 @@ class Base:
         Args:
             list_dictionaries (list): A list of dictionaries.
         """
-        if list_dictionaries is None or list_dictionaries == []:
+        if not list_dictionaries:
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -41,13 +41,23 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".json"
-        with open(filename, "w") as jsonfile:
-            if list_objs is None:
-                jsonfile.write("[]")
-            else:
-                list_dicts = [o.to_dictionary() for o in list_objs]
-                jsonfile.write(Base.to_json_string(list_dicts))
+        filename = f'{cls.__name__}.json'
+
+        def writeJFile(json_obj):
+            with open(filename, "w", encoding='utf-8') as file:
+                file.write(json_obj)
+
+        if not list_objs:
+            writeJFile("[]")
+            return
+
+        out = []
+        for obj in list_objs:
+            if not issubclass(obj.__class__, Base):
+                raise TypeError("object must be a subclass of Base")
+            out.append(obj.to_dictionary())
+        json_obj = cls.to_json_string(out)
+        writeJFile(json_obj)
 
     @staticmethod
     def from_json_string(json_string):
