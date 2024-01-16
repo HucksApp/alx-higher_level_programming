@@ -123,9 +123,9 @@ class Base:
                 file.writerow("[]")
                 return
             if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
+                fieldnames = ["id", "width", "height", "x", "y"]
+            else:
+                fieldnames = ["id", "size", "x", "y"]
                 csv_writer = DictWriter(file, fieldnames=fieldnames)
                 for obj in list_objs:
                     csv_writer.writerow(obj.to_dictionary())
