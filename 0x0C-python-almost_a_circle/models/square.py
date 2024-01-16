@@ -24,16 +24,17 @@ class Square(Rectangle):
     def size(self, value):
         """module Square size setter
         """
-        self.width = value
-        self.height = value
+        if all([hasattr(self, m) for m in ('width', 'height')]):
+            setattr(self, 'width', value)
+            setattr(self, 'height', value)
 
     def __str__(self):
         """module string represation of square
         """
-        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id,
-                                                         self.x,
-                                                         self.y,
-                                                         self.width)
+        name = self.__class__.__name__
+        return "[{}] ({:d}) {:d}/{:d} - {:d}".format(name, self.id,
+                                                     self.x, self.y,
+                                                        self.width)
 
     def update(self, *args, **kwargs):
         """module update square
