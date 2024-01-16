@@ -89,11 +89,12 @@ class Rectangle(Base):
         '''
             Prints to stdout the representation of the rectangle
         '''
-        rectangle = ""
-        print("\n" * self.y, end="")
-        for i in range(self.height):
-            rectangle += (" " * self.x) + ("#" * self.width) + "\n"
-        print(rectangle, end="")
+        print('\n' * self.__y, end='') # y offset
+        for y in range(self.__height):
+            print(' ' *  self.__x, end='') # x offset
+            for x in range(self.__width):
+                print('#', end='')
+            print()
 
     def update(self, *args, **kwargs):
         '''
