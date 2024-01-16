@@ -124,7 +124,7 @@ class Rectangle(Base):
 
     @staticmethod
     def setter_validation(attribute, value):
-        if type(value) != int:
+        if type(value) is not int:
             raise TypeError("{} must be an integer".format(attribute))
         if attribute == "x" or attribute == "y":
             if value < 0:
@@ -136,5 +136,6 @@ class Rectangle(Base):
         '''
             Overwritting the str method
         '''
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y,
-                                                       self.width, self.height)
+        return "[Rectangle] (f"[{self.__class__.__name__}] 
+                            ({self.id}) {self.__x}/{self.__y} - 
+                            {self.__width}/{self.__height}")
