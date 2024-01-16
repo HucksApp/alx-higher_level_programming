@@ -39,19 +39,13 @@ class Square(Rectangle):
     def update(self, *args, **kwargs):
         """module update square
         """
-        if len(args):
-            for i, arg in enumerate(args):
-                if i == 0:
-                    self.id = arg
-                elif i == 1:
-                    self.size = arg
-                elif i == 2:
-                    self.x = arg
-                elif i == 3:
-                    self.y = arg
-        else:
+        if args:
+            props = ["id", "size", "x", "y"]
+            for index, arg in enumerate(args):
+                setattr(self, props[index], arg)
+        elif kwargs:
             for key, value in kwargs.items():
-                if hasattr(self, key) is True:
+                if hasattr(self, key):
                     setattr(self, key, value)
 
     def to_dictionary(self):
