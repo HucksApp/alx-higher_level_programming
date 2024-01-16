@@ -89,9 +89,9 @@ class Rectangle(Base):
         '''
             Prints to stdout the representation of the rectangle
         '''
-        print('\n' * self.__y, end='') # y offset
+        print('\n' * self.__y, end='')  # y offset
         for y in range(self.__height):
-            print(' ' *  self.__x, end='') # x offset
+            print(' ' * self.__x, end='')  # x offset
             for x in range(self.__width):
                 print('#', end='')
             print()
