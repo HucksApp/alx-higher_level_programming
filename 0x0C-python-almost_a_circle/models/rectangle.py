@@ -100,18 +100,18 @@ class Rectangle(Base):
         '''
             Updates the arguments in the class
         '''
-        if len(args) == 0:
-            for key, val in kwargs.items():
-                self.__setattr__(key, val)
-            return
-        try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
-        except IndexError:
-            pass
+        if args:
+            try:
+                props = ["id", "width", "height", "x", "y"]
+                for index, arg in enumerate(args):
+                    if hasattr(self, props[index]):
+                        setattr(self, props[index], arg)
+            except IndexError:
+                pass
+        elif kwargs:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
 
     def to_dictionary(self):
         '''
