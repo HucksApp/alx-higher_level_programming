@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Defines a base model class."""
 from json import dumps, loads
-from csv import writer, DictReader, DictWriter
+from csv import DictReader, DictWriter
 import turtle
 
 
