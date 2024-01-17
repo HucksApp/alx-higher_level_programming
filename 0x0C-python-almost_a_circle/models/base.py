@@ -133,15 +133,15 @@ class Base:
         """
         filename = f'{cls.__name__}.csv'
         try:
-            with open(filename, "r", newline="") as csvfile:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in list_dicts]
-                return [cls.create(**d) for d in list_dicts]
+            props = []
+            with open(filename, encoding='utf-8') as file:
+                mid = ["size"] if cls.__name__ == 'Square' else ["width", "height"]
+                fieldnames = ["id", *mid, "x", "y"]
+                csv_reader = DictReader(file, fieldnames=fieldnames)
+                for row in csv_reader:
+                    prop = dict([key, int(value)] for key, value in row.items())
+                    props.append(prop)
+            return [cls.create(**props)]      
         except IOError:
             return []
 
