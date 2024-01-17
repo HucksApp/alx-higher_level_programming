@@ -53,7 +53,7 @@ class TestBase_from_json_sring(unittest.TestCase):
         r = Rectangle(10, 7, 2, 8, 1)
         str_fmt = str([r.to_dictionary()]).replace("'", '"')
         result = Base.from_json_string(str_fmt)
-        correct = [{"x": r.id, "y": 8, "id": 1, "height": 7, "width": 10}]
+        correct = [{"x": 2, "y": 8, "id": r.id, "height": 7, "width": 10}]
         self.assertEqual(correct, result)
     
     def test_square_filled_dictlist(self):
