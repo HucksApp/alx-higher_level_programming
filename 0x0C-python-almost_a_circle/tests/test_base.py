@@ -32,7 +32,7 @@ class TestBase_to_json_sring(unittest.TestCase):
     def test_square_filled_dictlist(self):
         s = Square(5)
         result = Base.to_json_string([s.to_dictionary()])
-         correct = (str([{"id": s.id, "x": 0, "size": 5,
+        correct = (str([{"id": s.id, "x": 0, "size": 5,
                     "y": 0}]).replace("'",'"'))
         self.assertEqual(correct, result)
 
