@@ -103,9 +103,9 @@ class Base:
         except FileNotFoundError:
             return []
         if lines:
-            json_props =  cls.from_json_string(lines)
+            json_props = cls.from_json_string(lines)
             for props in json_props:
-                obj_init =  [1] if cls is Square else [1, 1]
+                obj_init = [1] if cls is Square else [1, 1]
                 obj = cls(*obj_init)
                 obj.update(**props)
                 out.append(obj)
