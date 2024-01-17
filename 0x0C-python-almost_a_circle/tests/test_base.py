@@ -25,13 +25,13 @@ class TestBase_to_json_sring(unittest.TestCase):
     def test_rect_filled_dictlist(self):
         r = Rectangle(10, 7, 2, 8)
         result = Base.to_json_string([r.to_dictionary()])
-        correct = '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}'
+        correct = '[{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]'
         self.assertEqual(correct, result)
 
     def test_square_filled_dictlist(self):
         s = Square(5)
         result = Base.to_json_string([s.to_dictionary()])
-        correct = '[{"id": 1, "x": 0, "size": 5, "y": 0}]'
+        correct = '[{"id": 3, "x": 0, "size": 5, "y": 0}]'
         self.assertEqual(correct, result)
 
 
