@@ -80,7 +80,7 @@ class Base:
         """
         if not dictionary:
             return
-        cls_init = [1] if cls is Square else [1, 1]
+        cls_init = [1] if cls.__name__ == 'Square' else [1, 1]
         new = cls(*cls_init)
         new.update(**dictionary)
         return new
