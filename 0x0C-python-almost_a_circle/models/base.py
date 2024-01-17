@@ -3,7 +3,6 @@
 import json
 import csv
 import turtle
-from models.square import Square
 
 
 class Base:
@@ -117,7 +116,7 @@ class Base:
             if not list_objs:
                 file.writerow("[]")
                 return
-            mid = ["size"] if cls is Square else ["width", "height"]
+            mid = ["size"] if cls.__name__ == 'Square' else ["width", "height"]
             fieldnames = ["id", *mid, "x", "y"]
 
             csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
@@ -136,7 +135,8 @@ class Base:
         try:
             objs = []
             with open(filename, encoding='utf-8') as file:
-                mid = ["size"] if cls is Square else ["width","height"]
+                mid = ["size"] if cls.__name__ == 'Square' else ["width",
+                                                                 "height"]
                 fieldnames = ["id", *mid, "x", "y"]
                 csv_reader = csv.DictReader(file, fieldnames=fieldnames)
                 for row in csv_reader:
