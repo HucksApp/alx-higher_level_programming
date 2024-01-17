@@ -140,8 +140,8 @@ class Base:
                 fieldnames = ["id", *mid, "x", "y"]
                 csv_reader = DictReader(file, fieldnames=fieldnames)
                 for row in csv_reader:
-                    props = (dict([key, int(value)] for key,
-                            value in row.items()))
+                    props = (dict([key, int(value)]
+                                  for key, value in row.items()))
                     obj = cls.create(**props)
                     objs.append(obj)
             return objs
