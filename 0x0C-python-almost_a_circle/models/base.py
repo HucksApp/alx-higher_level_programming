@@ -133,17 +133,18 @@ class Base:
         """
         filename = f'{cls.__name__}.csv'
         try:
-            props = []
+            objs = []
             with open(filename, encoding='utf-8') as file:
                 mid = ["size"] if cls.__name__ == 'Square' else ["width",
                                                                  "height"]
                 fieldnames = ["id", *mid, "x", "y"]
                 csv_reader = DictReader(file, fieldnames=fieldnames)
                 for row in csv_reader:
-                    prop = dict([key, int(value)] for key, value in
+                    props = dict([key, int(value)] for key, value in
                                 row.items())
-                    props.append(prop)
-            return [cls.create(**props)]
+                    obj = cls.create(**props)
+                    objs.append(obj)
+            return objs
         except IOError:
             return []
 
