@@ -119,7 +119,7 @@ class Base:
             mid = ["size"] if cls is Square else ["width", "height"]
             fieldnames = ["id", *mid, "x", "y"]
 
-            csv_writer =  DictWriter(file, fieldnames=fieldnames)
+            csv_writer = DictWriter(file, fieldnames=fieldnames)
             for obj in list_objs:
                 csv_writer.writerow(obj.to_dictionary())
 
