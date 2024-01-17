@@ -53,14 +53,14 @@ class TestBase_from_json_sring(unittest.TestCase):
         r = Rectangle(10, 7, 2, 8, 1)
         str_fmt = str([r.to_dictionary()]).replace("'", '"')
         result = Base.from_json_string(str_fmt)
-        correct = [{"x": 2, "y": 8, "id": 1, "height": 7, "width": 10}]
+        correct = [{"x": r.id, "y": 8, "id": 1, "height": 7, "width": 10}]
         self.assertEqual(correct, result)
     
     def test_square_filled_dictlist(self):
         s = Square(5)
         str_fmt = str([s.to_dictionary()]).replace("'", '"')
         result = Base.from_json_string(str_fmt)
-        correct = [{"id": 2, "x": 0, "size": 5, "y": 0}]
+        correct = [{"id": s.id, "x": 0, "size": 5, "y": 0}]
         self.assertEqual(correct, result)
 
 
