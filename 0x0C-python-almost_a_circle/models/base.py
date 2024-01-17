@@ -95,7 +95,6 @@ class Base:
         """
         lines = ""
         json_props = []
-        out = []
         filename = f'{cls.__name__}.json'
         try:
             with open(filename, "r", encoding='utf-8') as file:
@@ -104,12 +103,7 @@ class Base:
             return []
         if lines:
             json_props = cls.from_json_string(lines)
-            for props in json_props:
-                obj_init = [1] if cls is Square else [1, 1]
-                obj = cls(*obj_init)
-                obj.update(**props)
-                out.append(obj)
-        return out
+            return [cls.create(**props) for props in json_props]
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
