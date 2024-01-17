@@ -138,7 +138,7 @@ class Base:
                 mid = ["size"] if cls.__name__ == 'Square' else ["width",
                                                                  "height"]
                 fieldnames = ["id", *mid, "x", "y"]
-                csv_reader = DictReader(file, fieldnames=fieldnames)
+                csv_reader = csv.DictReader(file, fieldnames=fieldnames)
                 for row in csv_reader:
                     props = (dict([key, int(value)]
                                   for key, value in row.items()))
