@@ -93,13 +93,23 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = str(cls.__name__) + ".json"
+        lines = ""
+        json_props = []
+        out = []
+        filename = f'{cls.__name__}.json'
         try:
-            with open(filename, "r") as jsonfile:
-                list_dicts = Base.from_json_string(jsonfile.read())
-                return [cls.create(**d) for d in list_dicts]
-        except IOError:
+            with open(filename, "r", encoding='utf-8') as file:
+                lines = file.read()
+        except FileNotFoundError:
             return []
+        if lines:
+            json_props =  cls.from_json_string(lines)
+            for props in json_props:
+                obj_init =  [1] if cls is Square else [1, 1]
+                obj = cls(*obj_init)
+                obj.update(**props)
+                out.append(obj)
+        return out
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
