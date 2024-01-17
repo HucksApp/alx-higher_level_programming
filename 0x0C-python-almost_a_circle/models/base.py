@@ -111,18 +111,17 @@ class Base:
         Args:
             list_objs (list): A list of inherited Base instances.
         """
-        filename = cls.__name__ + ".csv"
-        with open(filename, "w", newline="") as csvfile:
-            if list_objs is None or list_objs == []:
-                csvfile.write("[]")
-            else:
-                if cls.__name__ == "Rectangle":
-                    fieldnames = ["id", "width", "height", "x", "y"]
-                else:
-                    fieldnames = ["id", "size", "x", "y"]
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                for obj in list_objs:
-                    writer.writerow(obj.to_dictionary())
+        filename = f'{cls.__name__}.csv'
+        with open(f'{cls.__name__}.csv', "w",newline="", encoding='utf-8') as file:
+            if not list_objs:
+                file.writerow("[]")
+                return
+            mid = ["size"] if cls is Square else ["width", "height"]
+            fieldnames = ["id", *mid, "x", "y"]
+
+            csv_writer =  DictWriter(file, fieldnames=fieldnames)
+            for obj in list_objs:
+                csv_writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
@@ -132,7 +131,7 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-        filename = cls.__name__ + ".csv"
+        filename = f'{cls.__name__}.csv'
         try:
             with open(filename, "r", newline="") as csvfile:
                 if cls.__name__ == "Rectangle":
