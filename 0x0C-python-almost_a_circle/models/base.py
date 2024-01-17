@@ -116,7 +116,7 @@ class Base:
             if not list_objs:
                 file.writerow("[]")
                 return
-            mid = ["size"] if cls.__name__ == 'Square' ["width", "height"]
+            mid = ["size"] if cls.__name__ == 'Square' else ["width", "height"]
             fieldnames = ["id", *mid, "x", "y"]
 
             csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
