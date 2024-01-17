@@ -127,7 +127,7 @@ class Rectangle(Base):
     def setter_validation(attribute, value):
         if type(value) is not int:
             raise TypeError(f"{attribute} must be an integer")
-        if attribute == "x" or attribute == "y":
+        if attribute in ["y", "x"]:
             if value < 0:
                 raise ValueError(f"{attribute} must be >= 0")
         elif value <= 0:
