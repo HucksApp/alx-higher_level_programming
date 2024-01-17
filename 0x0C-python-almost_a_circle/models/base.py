@@ -112,7 +112,7 @@ class Base:
             list_objs (list): A list of inherited Base instances.
         """
         filename = f'{cls.__name__}.csv'
-        with open(f'{cls.__name__}.csv', "w",newline="", encoding='utf-8') as file:
+        with open(filename, "w", newline="", encoding='utf-8') as file:
             if not list_objs:
                 file.writerow("[]")
                 return
