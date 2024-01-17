@@ -60,7 +60,7 @@ class TestBase_from_json_sring(unittest.TestCase):
         s = Square(5)
         str_fmt = str([s.to_dictionary()]).replace("'", '"')
         result = Base.from_json_string(str_fmt)
-        correct = [{"id": s.id, "x": 0, "size": 5, "y": 0}]
+        correct = [{"id": s.id, "size": 5, "x": 0, "y": 0}]
         self.assertEqual(correct, result)
 
 
