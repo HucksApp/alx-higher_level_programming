@@ -800,5 +800,24 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         with self.assertRaises(TypeError):
             r.to_dictionary(1)
 
+class TestRectangle_create(unittest.TestCase):
+    """Unittests for testing to_dictionary method of the Rectangle class."""
+
+    def test_create_obj_type(self):
+        correct = Rectangle(10, 2, 1, 9)
+        result = Rectangle.create(**(correct.to_dictionary()))
+        self.assertIsNot(correct, result)
+        self.assertIsInstance(result, Rectangle)
+
+
+    def test_create_obj_props(self):
+        r1 = Rectangle(10, 2, 1, 9)
+        r2 = Rectangle.create(**(r1.to_dictionary()))
+        correct = r1.to_dictionary()
+        result = r2.to_dictionary()
+        self.assertDictEqual(correct, result)
+        self.assertDictEqual(r1.__dict__, r2.__dict__)
+
+
 if __name__ == "__main__":
     unittest.main()
