@@ -809,7 +809,6 @@ class TestRectangle_create(unittest.TestCase):
         self.assertIsNot(correct, result)
         self.assertIsInstance(result, Rectangle)
 
-
     def test_create_obj_props(self):
         r1 = Rectangle(10, 2, 1, 9)
         r2 = Rectangle.create(**(r1.to_dictionary()))
@@ -817,6 +816,32 @@ class TestRectangle_create(unittest.TestCase):
         result = r2.to_dictionary()
         self.assertDictEqual(correct, result)
         self.assertDictEqual(r1.__dict__, r2.__dict__)
+
+    def test_create_args(self):
+        d = {'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4 }
+        d2 = [89, 1, 2, 3, 4]
+        r1 = Rectangle(*d2)
+        m = []
+        d3 = {}
+        index = 0
+        for key, value in d.items():
+            if value == d2[index]:
+                d3.update({key: value})
+                m.append(Rectangle.create(**d3))
+            index +=1
+        former : object = None
+        for obj in m:
+            self.assertIsNot(obj, r1)
+            self.assertIsInstance(obj, Rectangle)
+            result = [*obj.to_dictionary()]
+            result.sort()
+            correct = [*d]
+            correct.sort()
+            self.assertEqual(result, correct)
+            if not former:
+                former = obj
+                continue
+            self.assertIsNot(former, obj)
 
 
 if __name__ == "__main__":
