@@ -30,7 +30,7 @@ class TestSquare_args(unittest.TestCase):
         self.assertEqual(s1.id, s2.id - 1)
 
     def test_four_args(self):
-        s1 = Square(1, 2, 3, 4)
+        s1 = Square(1, 2, 3, 2)
         s2 = Square(4, 3, 2, 1)
         self.assertEqual(s1.id, s2.id - 1)
 
