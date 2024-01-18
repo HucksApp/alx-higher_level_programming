@@ -94,3 +94,18 @@ class TestSquare__str(unittest.TestCase):
         correct = f"[Square] ({s.id}) 2/3 - 1"
         self.assertEqual(correct, s.__str__())
 
+
+class TestSquare_to_dictionary(unittest.TestCase):
+    """Unittests for testing create method of the Square class."""
+
+    def test_to_dict(self):
+        m1 = [[2, 1, 3], [2, 3, 1], [0,2,0]]
+        m2 = ["id", "x", "size", "y"]
+        s1 = Square(1, 2, 3, 4)
+        s2 = Square(3, 2, 1)
+        s3 = Square(2)
+        for index, s in enumerate([s1, s2, s3]):
+            result = s.to_dictionary()
+            correct = dict(zip(m2, [s.id, *m1[index]]))
+            self.assertDictEqual(correct, result)
+
