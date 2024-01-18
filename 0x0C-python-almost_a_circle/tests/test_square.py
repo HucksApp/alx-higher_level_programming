@@ -34,6 +34,12 @@ class TestSquare_args(unittest.TestCase):
         s2 = Square(4, 3, 2, 2)
         self.assertEqual(s1.id, s2.id - 1)
 
+    def test_error_args(self):
+        with self.assertRaises(ValueError):
+            Square(0), Square(-1), Square(4, -1), Square(1, 2, -3)
+        with self.assertRaises(TypeError):
+            Square("1"), Square(1, "2"), Square(1, 2, "3")
+
 
 class TestSquare_create(unittest.TestCase):
     """Unittests for testing create method of the Square class."""
@@ -79,4 +85,12 @@ class TestSquare_create(unittest.TestCase):
                 former = obj
                 continue
             self.assertIsNot(former, obj)
-        
+
+
+class TestSquare__str(unittest.TestCase):
+
+    def test___str_rep(self):
+        s = Square(1, 2, 3, 4)
+        correct = f"[Square] ({s.id}) 2/3 - 1"
+        self.assertEqual(correct, s.__str__())
+
