@@ -109,3 +109,32 @@ class TestSquare_to_dictionary(unittest.TestCase):
             correct = dict(zip(m2, [s.id, *m1[index]]))
             self.assertDictEqual(correct, result)
 
+
+class TestSquare_Update(unittest.TestCase):
+    """Unittests for testing to_dictionary method of the Rectangle class."""
+
+    def test_update_wrong_args(self):
+        s = Square(2, 3, 5)
+        with self.assertRaises(ValueError):
+            s.update(1, 2, -3), s.update(1, -2),
+            s.update(-1), s.update(0)
+
+        with self.assertRaises(TypeError):
+            s.update(1, 2, "3"), s.update(1, "2"),
+            s.update("1")
+
+    def test_update_diff_args_nums(self):
+
+        m1 = [[9],[7, 5],[6, 4, 2], [8, 2, 3, 4]]
+        m2 = ["id", "size", "x", "y"]
+        correct = {'id': 1, 'x': 0, 'size': 1, 'y': 0}
+        s = Square(1)
+        for args in m1:
+            index = 0
+            s.update(*args)
+            result = s.to_dictionary()
+            for arg in args:
+                correct.update({m2[index] : arg})
+                index += 1
+            self.assertDictEqual(correct, result)
+
