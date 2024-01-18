@@ -829,7 +829,7 @@ class TestRectangle_create(unittest.TestCase):
                 d3.update({key: value})
                 m.append(Rectangle.create(**d3))
             index +=1
-        former : object = None
+        former : 'Rectangle' = None
         for obj in m:
             self.assertIsNot(obj, r1)
             self.assertIsInstance(obj, Rectangle)
