@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-switch(process.argv.length) {
+switch (process.argv.length) {
   case 2: {
     console.log('No argument');
     break;
@@ -13,4 +13,3 @@ switch(process.argv.length) {
     console.log('Arguments found');
   }
 }
-
