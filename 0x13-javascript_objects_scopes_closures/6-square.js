@@ -10,8 +10,8 @@ class Square extends SquareP {
       let m = '';
       for (let x = 0; x < this.size; x++) { m += c; }
       console.log(m);
-      }
     }
   }
+}
 
 module.exports = Square;
