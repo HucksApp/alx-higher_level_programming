@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const dict = require('./101-data').dict;
 
-let valList =  Object.entries(d)
+let valList =  Object.entries(dict)
 let out = {}
   while (valList.length) {
     const curVal = valList[0][1];
