@@ -4,7 +4,7 @@ from MySQLdb import connect
 from sys import argv
 
 
-def connectDb(query: str) -> None:
+def dbQuery(query: str) -> None:
     """Query the Mysql database"""
     db = connect(host="localhost", user=argv[1],
                  passwd=argv[2], db=argv[3], port=3306)
@@ -19,4 +19,4 @@ def connectDb(query: str) -> None:
 
 if __name__ == "__main__":
     query = "SELECT * FROM states"
-    connectDb(query)
+    dbQuery(query)
