@@ -9,7 +9,7 @@ def dbQuery(query: str) -> None:
     db = connect(host="localhost", user=argv[1],
                  passwd=argv[2], db=argv[3], port=3306)
     cursor = db.cursor().
-    cursor.execute(query.format(argv[4])
+    cursor.execute(query.format()
     rows = cursor.fetchall()
     for row in rows:
         print(row)
@@ -18,5 +18,6 @@ def dbQuery(query: str) -> None:
 
 
 if __name__ == "__main__":
-    query = "SELECT * FROM states WHERE name LIKE BINARY '{}'"
+    query = f"SELECT * FROM states WHERE \
+                        name LIKE BINARY '{argv[4]}'"
     dbQuery(query)
