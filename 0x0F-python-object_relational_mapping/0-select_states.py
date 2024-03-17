@@ -4,7 +4,7 @@ from MySQLdb import connect
 from sys import argv
 
 
-def connectDb(query:str) -> None:
+def connectDb(query: str) -> None:
     """ lists all states from the database hbtn_0e_0_usa """
     db = connect(host="localhost", user=argv[1],
                  passwd=argv[2], db=argv[3], port=3306)
