@@ -3,6 +3,7 @@
 from MySQLdb import connect
 from sys import argv
 
+
 def connectDb():
     """ lists all states from the database hbtn_0e_0_usa """
     db = connect(host="localhost", user=argv[1],
@@ -18,4 +19,3 @@ def connectDb():
 
 if __name__ == "__main__":
     connectDb()
-
