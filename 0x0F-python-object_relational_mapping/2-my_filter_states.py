@@ -18,6 +18,6 @@ def dbQuery(query: str) -> None:
 
 
 if __name__ == "__main__":
-    query = f"SELECT * FROM states WHERE \
-                        name LIKE BINARY '{argv[4]}'"
+    query = "SELECT * FROM states WHERE name LIKE BINARY '{}'"
+            .format(argv[4])
     dbQuery(query)
